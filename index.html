@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <title id="timedate"></title>
+  <meta charset="utf-8">
+  <meta name="description" content="Мы занимаемся играми и музыкой.">
+  <meta name="keywords" content="Радио, интернет радио, игровое радио, игры, anubis, анубис, anubis radio, анубис радио, anubis discord">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
+</head>
+
+
+<audio crossOrigin="anonymous" preload="none" id="audio" src="http://45.156.27.45:8000/live" style="display: none; controls"></audio>
+
+<body>
+  <div class="container">
+    <a href="https://discord.gg/" target="_blank"><img class="logo" alt="" src="image/logo.png"></a>
+       <div class="container_audio_player">
+          <div class="audio-player">
+              <div class="play-buttons">
+                  <div id="img" class="play" onclick="play()"></div>
+              </div>
+              <div class="play-content">
+                  <p><strong>Radio</strong></p>
+                  <strong class="text_in_player">For gamers</strong>
+                  <input id="vol-control" type="range" min="0" max="100" step="1" oninput="SetVolume(this.value)" onchange="SetVolume(this.value)"></input>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="footer">
+    <p><a class="text_footer" href="https://discord.gg" target="_blank"><i class="fab fa-discord"></i><strong> Discord</strong></a></p>
+    <p><a class="text_footer" href="https://vk.com/" target="_blank"><i class="fab fa-vk"></i><strong> VK.COM</strong></a></p>
+    <p><a class="text_footer" href="https://steamcommunity.com/" target="_blank"><i class="fab fa-steam"></i><strong> Steam</strong></a></p>
+  </div>
+</body>
+
+<script>
+
+        $(document).ready(function(){
+
+            var url;
+            var title;
+            var broadcasturl;
+            var stationname;
+
+        });
+
+
+    var player = document.getElementById("audio");
+    player.controls = true;
+    var image = document.getElementById("img");
+
+    function play(){
+
+        if(!player.paused){
+
+            player.pause();
+            image.classList.remove('pause');
+            image.classList.add('play');
+
+
+        }else{
+
+            player.play();
+            image.classList.remove('play');
+            image.classList.add('pause');
+        }
+    }
+
+    function playAudio() {
+        player.play();
+
+    }
+
+    function pauseAudio() {
+        player.pause();
+    }
+
+    function SetVolume(val){
+        player.volume = val / 100;
+    }
+
+
+</script>
+<script type="text/javascript">
+
+    function zero_first_format(value)
+    {
+        if (value < 10)
+        {
+            value='0'+value;
+        }
+        return value;
+    }
+
+    function date_time()
+    {
+        var current_datetime = new Date();
+        var hours = zero_first_format(current_datetime.getHours());
+        var minutes = zero_first_format(current_datetime.getMinutes());
+        var seconds = zero_first_format(current_datetime.getSeconds());
+
+        return "Radio - "+hours+":"+minutes+":"+seconds;
+    }
+</script>
+<script type="text/javascript">
+
+    setInterval(function () {
+        document.getElementById('timedate').innerHTML = date_time();
+    }, 1000);
+</script>
+<style>
+
+
+p, span{
+    font-family: 'Open Sans', sans-serif;
+}
+
+span{
+    font-size: 14px;
+    font-style: italic;
+}
+
+ input[type=range] {
+  -webkit-appearance: none;
+  margin: 4px 6px;
+  width: 80%;
+  background: #333336;
+
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px #000000;
+  background: #B6B6B6;
+  border-radius: 8px;
+  border: 0px solid #8A8A8A;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #828282;
+  border: 1px solid #8A8A8A;
+  height: 13px;
+  width: 13px;
+  border-radius: 19px;
+  background: #000;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -4.5px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #B6B6B6;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px #000000;
+  background: #555556;
+  border-radius: 8px;
+  border: 0px solid #8A8A8A;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #828282;
+  border: 1px solid #8A8A8A;
+  height: 10px;
+  width: 10px;
+  border-radius: 19px;
+  background: #aaaaaa;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #B6B6B6;
+  border: 0px solid #8A8A8A;
+  border-radius: 16px;
+  box-shadow: 0px 0px 0px #000000;
+}
+input[type=range]::-ms-fill-upper {
+  background: #B6B6B6;
+  border: 0px solid #8A8A8A;
+  border-radius: 16px;
+  box-shadow: 0px 0px 0px #000000;
+}
+input[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1px #828282;
+  border: 1px solid #8A8A8A;
+  height: 13px;
+  width: 13px;
+  border-radius: 19px;
+  background: #000;
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #B6B6B6;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #B6B6B6;
+}
+
+.play{
+    background-image: url("image/play.png");
+    height: 65px;
+    width: 65px;
+    margin: 12px 0 7.5px 15px;
+    cursor: pointer;
+}
+
+.pause{
+    background-image: url("image/pause.png");
+    height: 65px;
+    width: 65px;
+    margin: 12px 0 7.5px 15px;
+    cursor: pointer;
+}
+
+.text_in_player {
+  font-size: 12px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.logo{
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+  box-shadow: 0 1px 30px rgba(0,0,0,10), 0 1px 20px rgba(0,0,0,10);
+  transition: background 0.1s linear, color 0.1s linear, transform 0.1s linear;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+}
+
+.audio-player{
+    width: 325px;
+    height: 90px;
+    display: flex;
+    border-radius: 20px;
+    box-shadow: 0 1px 30px rgba(0,0,0,10), 0 1px 20px rgba(0,0,0,10);
+    background: #333336;
+    border: 3px solid #fff;
+
+}
+
+.play-buttons{
+    /* flex-grow: 1; */
+}
+
+.play-content{
+    flex-grow: 2;
+    padding: 0 5px ;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    color: #E4E4E5;
+}
+
+body {
+  background-color: #222226;
+  height: 91vh;
+  background: url("image/2.jpg") center no-repeat;
+  background-size: cover;
+  justify-content: center;
+  display: flex;
+  position: relative;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.container {
+  justify-content: center;
+  position: relative;
+  align-items: center;
+  text-align: center;
+  padding: 200px;
+}
+
+.container_audio_player {
+  height: 15vh;
+  background-size: cover;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.footer {
+	position: absolute;
+	left: 0;
+	bottom: -60px;
+	width: 100%;
+	height: 80px;
+}
+
+.text_footer:hover {
+  font-size: 17px;
+  color: #dedede;
+}
+
+.text_footer {
+  font-family: 'Open Sans', sans-serif;
+  text-decoration: none;
+  color: #fff;
+  transition: 0.2s;
+}
+
+
+
+p{
+    margin: 6px;
+}
+
+p:nth-child(1){
+    margin-top:12px;
+    margin-bottom:6px;
+}
+
+
+</style>
+</html>
